@@ -1,0 +1,23 @@
+# ワークフローの名前を定義する。GitHub Actionsタブでこの名前が表示される
+name: Hello World
+# ワークフローのトリガーとなるイベントを指定する
+on:
+  # すべてのブランチへのプッシュ時に実行
+  push:
+  # GitHub上から手動で実行する
+  workflow_dispatch:
+
+# 実行するジョブを定義
+jobs:
+  # ジョブ名を定義（任意の名前を付けられる）
+  say-hello:
+    # ジョブを実行する仮想環境を指定する
+    runs-on: ubuntu-latest
+    # ジョブ内で実行する一連のステップを定義する
+    steps:
+      # リポジトリのコードをチェックアウトするアクション
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # シェルコマンドを実行するステップ（ここでHello, World!を出力する）
+      - name: Hello
+        run: echo "Hello, World!"
